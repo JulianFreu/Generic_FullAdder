@@ -1,5 +1,5 @@
 library ieee;
-use ieee.std_logic - 1164.all;
+use ieee.std_logic_1164.all;
 -- ##########################
 -- ### entity declaration ###
 -- ##########################
@@ -11,7 +11,7 @@ entity full_adder is
     i_bit_b : in std_logic;
     i_carry : in std_logic;
     o_carry : out std_logic;
-    o_sum : out std_logic;
+    o_sum : out std_logic
   );
 end full_adder;
 
@@ -39,7 +39,7 @@ architecture rtl of full_adder is
   signal z : std_logic;
 
 begin
-  ha1 : half_adder is
+  ha1 : half_adder
   port map(
     i_a => i_bit_a,
     i_b => i_bit_b,
@@ -47,7 +47,7 @@ begin
     o_carry => x
   );
 
-  ha2 : half_adder is
+  ha2 : half_adder
   port map(
     i_a => i_carry,
     i_b => x,

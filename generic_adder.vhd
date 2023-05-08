@@ -1,14 +1,14 @@
 library ieee;
-use ieee.std_logic-1164.all;
+use ieee.std_logic_1164.all;
 
 entity generic_adder is	
 	generic(
-		g_BIT_WIDTH	: integer := 8;
+		g_BIT_WIDTH	: integer := 8
 	);
 	port(
-		i_value_a 	: std_logic_vector(g_BIT_WIDTH-1 downto 0);
-		i_value_b	: std_logic_vector(g_BIT_WIDTH-1 downto 0);
-		o_result	: std_logic_vector(g_BIT_WIDTH downto 0)
+		i_value_a 	: in std_logic_vector(g_BIT_WIDTH-1 downto 0);
+		i_value_b	: in std_logic_vector(g_BIT_WIDTH-1 downto 0);
+		o_result	: out std_logic_vector(g_BIT_WIDTH downto 0)
 	);
 end generic_adder;
 
@@ -21,13 +21,13 @@ architecture arch of generic_adder is
 			i_bit_b		: in std_logic;
 			i_carry		: in std_logic;
 			o_carry		: out std_logic;
-			o_sum		: out std_logic;
+			o_sum		: out std_logic
 	);
 	end component;
 	
 -- 	### Signals #####################################################
-	signal w_sum		: std_logic_vector(g_BIT_WIDTH-1 downto 0)
-	signal w_carry		: std_logic_vector(g_BIT_WIDTH downto 0)
+	signal w_sum		: std_logic_vector(g_BIT_WIDTH-1 downto 0);
+	signal w_carry		: std_logic_vector(g_BIT_WIDTH downto 0);
 	
 --	### begin #######################################################
 begin
@@ -35,7 +35,7 @@ begin
 	w_carry(0) <= '0';
 	
 	generate_full_adders : for ii in 0 to g_BIT_WIDTH-1 generate
-		fa_ii : full_adder is
+		fa_ii : full_adder
 			port map(
 			i_bit_a 	=>	i_value_a(ii),				
 			i_bit_b 	=>	i_value_a(ii),
